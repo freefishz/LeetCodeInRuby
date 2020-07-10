@@ -32,3 +32,26 @@ def zigzag_level_order(root)
   end
   res
 end
+
+# DFS
+def zigzag_level_order(root)
+  return [] unless root
+  
+  res = []
+  dfs(root, 0, res)
+  res
+end
+
+def dfs(node, level, res)
+  return unless node
+
+  res[level] ||= []
+  if level.odd?
+    res[level].unshift node.val 
+  else
+    res[level].push node.val 
+  end
+  dfs(node.left, level + 1, res)
+  dfs(node.right, level + 1, res)
+end
+
