@@ -34,12 +34,12 @@ end
 
 def dfs(board, i, j, trie_node, cur_string)
   @res.add cur_string if trie_node[26] == '#'
-  return false if i < 0 || i > @rows || j < 0 || j > @cols
-  return false if @visited[i][j]
+
+  return if i < 0 || i > @rows || j < 0 || j > @cols
+  return if @visited[i][j]
 
   cur = board[i][j].ord - 'a'.ord
-
-  return false if trie_node[cur].nil?
+  return if trie_node[cur].nil?
 
   @visited[i][j] = true
   dfs(board, i + 1, j, trie_node[cur], cur_string + board[i][j])
