@@ -10,3 +10,13 @@ def max_profit(prices)
   res
 end
 
+def max_profit(prices)
+  return 0 if prices.empty?
+
+  dp_i_0 = 0
+  dp_i_1 = -1.0/0.0
+  prices.each do |p|
+    dp_i_0, dp_i_1 = [dp_i_0, dp_i_1 + p].max, [dp_i_1, dp_i_0 - p].max
+  end
+  dp_i_0
+end
